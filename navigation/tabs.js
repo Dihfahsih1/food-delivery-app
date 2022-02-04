@@ -1,15 +1,13 @@
-
+import React from 'react';
 import {View,Image, TouchableOpacity} from 'react-native'
 
 import {createBottomTabNavigator, BottomTabBar} from '@react-navigation/bottom-tabs'
 
 import {Home} from '../screens'
 
-import {Colors, Icons} from '../constants'
+import {COLORS, icons} from '../constants'
 
-const Tab = createBottomTabNavigator
-
-import React from 'react';
+const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
   return (
@@ -20,12 +18,12 @@ const Tabs = () => {
         options={{
           tabBarIcon:({focused})=>(
           <Image 
-            source={Icons.cutlery}
-            resizeMode ='contain'
+            source={icons.coupon}
+            resizeMode = "contain"
             style={{
               width:25,
               height:25,
-              tintColor: focused? COLORS.primary: COLORS.secondary
+              tintColor: focused ? COLORS.primary : COLORS.secondary
             }}
           
           />
@@ -34,6 +32,6 @@ const Tabs = () => {
       />
     </Tab.Navigator>
   )
-};
+}
 
 export default Tabs;
