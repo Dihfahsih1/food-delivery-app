@@ -7,6 +7,7 @@ import {Home} from '../screens'
 
 import {COLORS, icons} from '../constants'
 
+// set the tab
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
