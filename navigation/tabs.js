@@ -14,7 +14,12 @@ const Tabs = () => {
   return (
     <Tab.Navigator 
     tabBarOptions={{
-      showLabel:false
+      showLabel:false,
+      style:{
+        borderTopWidth:0,
+        backgroundColor: "transparent",
+        elevation:0
+      }
     }}
     >
       
@@ -62,7 +67,7 @@ const Tabs = () => {
         options={{
           tabBarIcon:({focused})=>(
           <Image 
-            source={icons.like}
+            source={icons.check_circle}
             resizeMode = "contain"
             style={{
               width:25,
