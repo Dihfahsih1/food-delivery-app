@@ -402,7 +402,27 @@ const Home = () => {
           marginRight:SIZES.padding,
           ...styles.shadow
         }}>
+          <View style={{     
+                  width:30,
+                  height:40,
+                  borderRadius:25,
+                  alignItems:'center',
+                  justifyContent:'center',
+                  backgroundColor: COLORS.white,
+                  }}>
+            <Image 
+                source={item.icon}
+                resizeMode='contain'
+                style={{
+                  width:30,
+                  height:30
+                }} 
+            />
 
+          </View>
+               <Text style={{marginTop: SIZES.padding, color:COLORS.white, ...FONTS.body5}}>
+            {item.name}
+          </Text>
         </TouchableOpacity>
       )
     }
