@@ -13,7 +13,7 @@ const Home = () => {
 
              } }>
             <Image 
-              source={icons.nearby}
+              source={icons.map}
               resizeMode='contain'
               style={{
                 width:30,
@@ -25,40 +25,46 @@ const Home = () => {
 
           <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 
+          
+
+            <View style={{
+                  width:'70%',
+                  height: '100%',
+                  backgroundColor: COLORS.lightGray2,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius:SIZES.radius
+
+              }}>
+
+              <Text style={{ ...FONTS.h3 }}>Location</Text>
+            </View>
           </View>
 
-          <View style={{
-                width:'50%',
-                height: '100%',
-                backgroundColor: COLORS.lightGray2,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius:SIZES.radius
+          <TouchableOpacity 
+            style={{
+                width:50,
+                paddingRight: SIZES.padding *2,
+                justifyContent: 'center'
+              }}>
+            <Image
+                source={icons.cart}
+                resizeMode='contain'
+                style={{
+                    width:30,
+                    height:30}}
+            />
 
-             }}>
-
-            <Text style={{ ...FONTS.h3 }}>Location</Text>
-          </View>
-
+          </TouchableOpacity>
       </View>
+      
 
       )
   }
 
-  <TouchableOpacity style={{
-    width:50,
-    paddingRight: SIZES.padding *2,
-    justifyContent: 'center'
-  }}>
-    <Image
-        source={icons.basket}
-        resizeMode='contain'
-        style={{
-            width:30,
-            height:30}}
-    />
+  
 
-  </TouchableOpacity>
+  
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
