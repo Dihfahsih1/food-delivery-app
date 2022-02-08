@@ -342,7 +342,7 @@ const Home = () => {
       <View style={{flexDirection:'row', height: 50}}>
           <TouchableOpacity style={{
             width:50,
-            paddingLeft: SIZES.padding *2, justifyContent: 'center'
+            paddingLeft: SIZES.padding *1, justifyContent: 'center'
 
              } }>
             <Image 
@@ -377,7 +377,7 @@ const Home = () => {
           <TouchableOpacity 
             style={{
                 width:50,
-                paddingRight: SIZES.padding *2,
+                paddingRight: SIZES.padding *1,
                 justifyContent: 'center'
               }}>
             <Image
@@ -403,7 +403,7 @@ const Home = () => {
       return (
         <TouchableOpacity style={{
           padding:SIZES.padding,
-          paddingBottom:SIZES.padding *2,
+          paddingBottom:SIZES.padding *1,
           backgroundColor:(selectedCategory?.id == item.id) ? COLORS.primary : COLORS.white,
           borderRadius:SIZES.radius,
           alignItems:'center',
@@ -438,10 +438,10 @@ const Home = () => {
       )
     }
     return(
-      <View style={{padding:SIZES.padding *2}}
+      <View style={{padding:SIZES.padding *1}}
       >
-        <Text style={{...FONTS.h1}}>Main</Text>
-        <Text style={{...FONTS.h1}}>Categories</Text>
+        <Text style={{...FONTS.h3}}>Main</Text>
+        <Text style={{...FONTS.h3}}>Categories</Text>
 
         <FlatList 
             data={categories}
@@ -449,7 +449,7 @@ const Home = () => {
             showsHorizontalScrollIndicator ={false}
             keyExtractor={item =>`${item.id}`}
             renderItem={renderItem}
-            contentContainerStyle={{paddingVertical: SIZES.padding *2}}
+            contentContainerStyle={{paddingVertical: SIZES.padding *1}}
         />
          
 
@@ -461,7 +461,7 @@ const Home = () => {
   function renderRestaurantList(){
     const renderItem =({ item })=>(
       <TouchableOpacity 
-       style={{marginBottom: SIZES.padding *2, }}
+       style={{marginBottom: SIZES.padding *1, }}
       >
         <View>
           <Image 
@@ -473,7 +473,26 @@ const Home = () => {
               borderRadius: SIZES.radius,
             }}
           />
+          <View 
+            style={{position:'absolute',
+                  bottom:0,
+                  height:50,
+                  width: SIZES.width=0.3,
+                  backgroundColor:COLORS.white,
+                  borderTopRightRadius:SIZES.radius,
+                  borderBottomLeftRadius:SIZES.radius,
+                  alignItems:'center',
+                  justifyContent:'center',
+                  ...styles.shadow
+
+            }}>
+              <Text style={{...FONTS.h4}}>
+                  {item.duration}
+              </Text>
+          </View>
+
         </View>
+
 
       </TouchableOpacity>
      
@@ -485,7 +504,7 @@ const Home = () => {
         keyExtractor={item =>`${item.id}`}
         renderItem = {renderItem}
         contentContainerStyle={{
-          paddingHorizontal: SIZES.padding *2,
+          paddingHorizontal: SIZES.padding *1,
           paddingBottom: 30
         }}
       />
