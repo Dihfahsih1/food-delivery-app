@@ -87,13 +87,13 @@ const Tabs = () => {
     )} 
     >
       
-      <Tab.Screen
+    <Tab.Screen
         name="Home"
         component={Home}
         options={{
           tabBarIcon:({focused})=>(
           <Image 
-            source={icons.coupon}
+            source={icons.menu}
             resizeMode = "contain"
             style={{
               width:25,
@@ -141,7 +141,7 @@ const Tabs = () => {
         options={{
           tabBarIcon:({focused})=>(
           <Image 
-            source={icons.check_circle}
+            source={icons.love}
             resizeMode = "contain"
             style={{
               width:25,
@@ -165,7 +165,7 @@ const Tabs = () => {
               options={{
                 tabBarIcon:({focused})=>(
                 <Image 
-                  source={icons.user}
+                  source={icons.eye}
                   resizeMode = "contain"
                   style={{
                     width:25,
