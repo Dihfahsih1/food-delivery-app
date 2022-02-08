@@ -124,7 +124,7 @@ const Home = () => {
             rating: 4.8,
             categories: [2, 4, 6],
             priceRating: expensive,
-            photo: images.pizza_restaurant,
+            photo: images.great_food,
             duration: "15 - 20 min",
             location: {
                 latitude: 1.556306570595712,
@@ -175,7 +175,7 @@ const Home = () => {
             rating: 4.8,
             categories: [3],
             priceRating: expensive,
-            photo: images.hot_dog_restaurant,
+            photo: images.hot_delivery,
             duration: "20 - 25 min",
             location: {
                 latitude: 1.5238753474714375,
@@ -463,7 +463,10 @@ const Home = () => {
       <TouchableOpacity 
        style={{marginBottom: SIZES.padding *1, }}
       >
-        <View>
+        <View 
+          style={{
+            marginBottom:SIZES.padding
+          }}>
           <Image 
             source={item.photo}
             resizeMode='cover'
@@ -474,10 +477,11 @@ const Home = () => {
             }}
           />
           <View 
-            style={{position:'absolute',
+            style={{
+                  position:'absolute',
                   bottom:0,
                   height:50,
-                  width: SIZES.width=0.3,
+                  width: SIZES.width * 0.3,
                   backgroundColor:COLORS.white,
                   borderTopRightRadius:SIZES.radius,
                   borderBottomLeftRadius:SIZES.radius,
@@ -486,12 +490,12 @@ const Home = () => {
                   ...styles.shadow
 
             }}>
-              <Text style={{...FONTS.h4}}>
-                  {item.duration}
-              </Text>
-          </View>
 
+            <Text style={{...FONTS.h4}}>{item.duration} </Text>
+              
+          </View>
         </View>
+        <Text style={{...FONTS.body5}}> {item.name} </Text>
 
 
       </TouchableOpacity>
