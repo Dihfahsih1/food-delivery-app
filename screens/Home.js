@@ -451,18 +451,17 @@ const Home = () => {
             renderItem={renderItem}
             contentContainerStyle={{paddingVertical: SIZES.padding *2}}
         />
+         
 
      </View>
     )
 
   }
+ 
   function renderRestaurantList(){
-    const renderItem =({item})=>{
+    const renderItem =({ item })=>(
       <TouchableOpacity 
-       styles={{
-         marginBottom: SIZES.padding *2,
-
-        }}
+       style={{marginBottom: SIZES.padding *2, }}
       >
         <View>
           <Image 
@@ -478,16 +477,17 @@ const Home = () => {
 
       </TouchableOpacity>
      
-    }
+    )
     return(
+
       <FlatList
-      data={restaurants}
-      keyExtractor={item =>`${item.id}`}
-      renderItem = {renderItem}
-      contentContainerStyle={{
-        paddingHorizontal: SIZES.padding *2,
-        paddingBottom: 30
-      }}
+        data={restaurants}
+        keyExtractor={item =>`${item.id}`}
+        renderItem = {renderItem}
+        contentContainerStyle={{
+          paddingHorizontal: SIZES.padding *2,
+          paddingBottom: 30
+        }}
       />
     )
   }
