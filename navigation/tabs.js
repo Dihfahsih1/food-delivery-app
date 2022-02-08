@@ -1,13 +1,13 @@
 import React from 'react';
 import {View,Image, TouchableOpacity} from 'react-native'
 
-import {createBottomTabNavigator, BottomTabBar} from '@react-navigation/bottom-tabs'
-
-import {Home} from '../screens'
+import {createBottomTabNavigator, BottomTabBar} from '@react-navigation/bottom-tabs';
+import Svg,{ Path } from 'react-native-svg';
+import {Home} from '../screens';
 
 import {COLORS, icons} from '../constants'
 
-import Svg,{Path} from 'react-native-svg'
+
 
 // set the tab
 const Tab = createBottomTabNavigator();
@@ -16,7 +16,7 @@ const TabBarCustomButton = ({accessibilityState, children, onPress}) =>{
 
   var isSelected = accessibilityState.Selected
 
-  if (isSelected ){
+  if (isSelected){
     return (
       <View style={{flex: 1,alignItems:"center"}}>
         <View style={{ flexDirection:'row', position:'absolute',top:0, }}>
@@ -57,9 +57,17 @@ const TabBarCustomButton = ({accessibilityState, children, onPress}) =>{
       </TouchableOpacity>
     )
   }
-  
+}
 
+const CustomTopBar = (props) =>{
+return(
+  <View>
+    <View style={{ position:'absolute',bottom:0, left:0,right:0, height:30, backgroundColor:COLORS.white}}>
 
+    </View>
+      <BottomTabBar {...props.props} />
+  </View>
+)
 }
 
 const Tabs = () => {
@@ -73,6 +81,10 @@ const Tabs = () => {
         elevation:0
       }
     }}
+    
+    tabBar={(props)=>(
+      <CustomTopBar props={props} /> 
+    )} 
     >
       
       <Tab.Screen
