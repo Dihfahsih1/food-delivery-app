@@ -1,5 +1,6 @@
 import React from 'react';
 import {View,SafeAreaView,Image, TouchableOpacity, StyleSheet,FlatList, Text} from 'react-native';
+import { Restaurant } from '.';
 
 import {COLORS, icons, images, SIZES,FONTS} from '../constants'
 
@@ -18,12 +19,12 @@ const Home = () => {
         {
             id: 1,
             name: "Rice",
-            icon: icons.rice_bowl,
+            icon: icons.rice,
         },
         {
             id: 2,
             name: "Noodles",
-            icon: icons.noodle,
+            icon: icons.calories,
         },
         {
             id: 3,
@@ -80,7 +81,7 @@ const Home = () => {
             rating: 4.8,
             categories: [5, 7],
             priceRating: affordable,
-            photo: images.burger_restaurant_1,
+            photo: images.favourite_food,
             duration: "30 - 45 min",
             location: {
                 latitude: 1.5347282806345879,
@@ -94,7 +95,7 @@ const Home = () => {
                 {
                     menuId: 1,
                     name: "Crispy Chicken Burger",
-                    photo: images.crispy_chicken_burger,
+                    photo: images.great_food,
                     description: "Burger with crispy chicken, cheese and lettuce",
                     calories: 200,
                     price: 10
@@ -102,7 +103,7 @@ const Home = () => {
                 {
                     menuId: 2,
                     name: "Crispy Chicken Burger with Honey Mustard",
-                    photo: images.honey_mustard_chicken_burger,
+                    photo: images.hot_delivery,
                     description: "Crispy Chicken Burger with Honey Mustard Coleslaw",
                     calories: 250,
                     price: 15
@@ -328,6 +329,14 @@ const Home = () => {
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
+  function onSelectedCategory(category){
+    //filter category
+    let restaurantList = restaurantData.filter(a =>a.categories.includes(category.id))
+    setRestaurants(restaurantList)
+    setSelectedCategory(category)
+
+  }
+
   function renderHeader(){
     return (
       <View style={{flexDirection:'row', height: 50}}>
@@ -395,17 +404,19 @@ const Home = () => {
         <TouchableOpacity style={{
           padding:SIZES.padding,
           paddingBottom:SIZES.padding *2,
-          backgroundColor:COLORS.primary,
+          backgroundColor:(selectedCategory?.id == item.id) ? COLORS.primary : COLORS.white,
           borderRadius:SIZES.radius,
           alignItems:'center',
           justifyContent:'center',
           marginRight:SIZES.padding,
           ...styles.shadow
-        }}>
+        }}
+        onPress={() =>onSelectedCategory(item)}
+        >
           <View style={{     
                   width:30,
                   height:40,
-                  borderRadius:25,
+                  borderRadius:45,
                   alignItems:'center',
                   justifyContent:'center',
                   backgroundColor: COLORS.white,
@@ -420,7 +431,7 @@ const Home = () => {
             />
 
           </View>
-               <Text style={{marginTop: SIZES.padding, color:COLORS.white, ...FONTS.body5}}>
+               <Text style={{marginTop: SIZES.padding, color:(selectedCategory?.id == item.id) ? COLORS.white : COLORS.black, ...FONTS.body5}}>
             {item.name}
           </Text>
         </TouchableOpacity>
@@ -445,10 +456,46 @@ const Home = () => {
     )
 
   }
+  function renderRestaurantList(){
+    const renderItem =({item})=>{
+      <TouchableOpacity 
+       styles={{
+         marginBottom: SIZES.padding *2,
+
+        }}
+      >
+        <View>
+          <Image 
+            source={item.photo}
+            resizeMode='cover'
+            style={{
+              width:'100%',
+              height:200,
+              borderRadius: SIZES.radius,
+            }}
+          />
+        </View>
+
+      </TouchableOpacity>
+     
+    }
+    return(
+      <FlatList
+      data={restaurants}
+      keyExtractor={item =>`${item.id}`}
+      renderItem = {renderItem}
+      contentContainerStyle={{
+        paddingHorizontal: SIZES.padding *2,
+        paddingBottom: 30
+      }}
+      />
+    )
+  }
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
       {renderMainCategories()}
+      {renderRestaurantList()}
 
     </SafeAreaView>
   )

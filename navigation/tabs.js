@@ -88,6 +88,7 @@ const Tabs = () => {
     >
       
     <Tab.Screen
+        
         name="Home"
         component={Home}
         options={{
