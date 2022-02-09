@@ -62,8 +62,8 @@ const TabBarCustomButton = ({accessibilityState, children, onPress}) =>{
 const CustomTopBar = (props) =>{
 return(
   <View>
-    <View style={{ position:'absolute',bottom:0, left:0,right:0, height:30, backgroundColor:COLORS.white}}>
-
+    <View style={{ position:'absolute',bottom:0, left:0,right:0, height:30, backgroundColor:COLORS.lightGray1}}>
+        
     </View>
       <BottomTabBar {...props.props} />
   </View>
@@ -89,7 +89,7 @@ const Tabs = () => {
       
     <Tab.Screen
         
-        name="Homepage"
+        name="Home"
         component={Home}
         options={{
           tabBarIcon:({focused})=>(

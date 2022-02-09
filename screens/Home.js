@@ -357,9 +357,6 @@ const Home = () => {
           </TouchableOpacity>
 
           <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-
-          
-
             <View style={{
                   width:'70%',
                   height: '100%',
@@ -394,9 +391,6 @@ const Home = () => {
 
       )
   }
-
-  
-
   function renderMainCategories(){
 
     const renderItem =({item})=>{
@@ -495,7 +489,17 @@ const Home = () => {
               
           </View>
         </View>
+        {/* restaurant details */}
         <Text style={{...FONTS.body5}}> {item.name} </Text>
+
+        <View
+          style={{padding: SIZES.padding,
+                  flexDirection:'row',}}>
+          <Image 
+                source={icons.star}
+                style={{height:20,width:30, tintColor:COLORS.primary, marginRight:10,}}/>
+          <Text style={{...FONTS.body3}}>{item.rating}</Text>
+        </View>
 
 
       </TouchableOpacity>
