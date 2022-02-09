@@ -4,7 +4,7 @@ import { Restaurant } from '.';
 
 import {COLORS, icons, images, SIZES,FONTS} from '../constants'
 
-const Home = () => {
+const Home = ({navigation}) => {
       // Dummy Datas
 
     const initialCurrentLocation = {
@@ -463,7 +463,11 @@ const Home = () => {
   function renderRestaurantList(){
     const renderItem =({ item })=>(
       <TouchableOpacity 
-       style={{marginBottom: SIZES.padding *1, }}
+       style={{marginBottom: SIZES.padding *1}}
+       onPress={() => navigation.navigate('Restaurant',{
+         item,
+         currentLocation
+       })}
       >
         <View 
           style={{
