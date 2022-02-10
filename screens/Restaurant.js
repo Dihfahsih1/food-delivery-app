@@ -130,6 +130,25 @@ function renderHeader(){
 
                 </View>
 
+                {/* Name and the description */}
+
+                <View style={{
+                  width:SIZES.width,
+                  alignItem:'center',
+                  marginTop:15,
+                  paddingHorizontal:SIZES.padding * 2
+                }}>
+
+                  <Text style={{
+                    marginVertical:10, textAlign:'center',...FONTS.h3
+                  }}>{item.name} - {item.price.toFixed(2)}</Text>
+
+                  <Text style={{textAlign:'center', ...FONTS.body3}}>{item.description}
+
+                  </Text>
+
+                </View>
+
               </View> 
             ))
           }
