@@ -4,8 +4,8 @@ import {View,SafeAreaView,Image, TouchableOpacity, StyleSheet,FlatList, Text, An
 import {COLORS, icons, images, SIZES,FONTS} from '../constants'
 const Restaurant = ({route, navigation}) => {
 
-  const[restaurant, setRestaurant] = React.setState(null);
-  const[currentLocation, setcurrentLocation] = React.setState(null);
+  const[restaurant, setRestaurant] = React.useState(null);
+  const[currentLocation, setcurrentLocation] = React.useState(null);
 
   React.useEffect(() =>{
     let{item, currentLocation} = route.params
@@ -39,10 +39,10 @@ function renderHeader(){
   )
 
 };
-const styles = styles.create({
+const styles = StyleSheet.create({
   container: {
     flex:1,
-    backgroundColor=COLORS.lightGray2
+    backgroundColor:COLORS.lightGray2
 
   }
 
