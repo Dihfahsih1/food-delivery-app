@@ -18,7 +18,7 @@ function renderHeader(){
   return (
     <View style={{flexDirection:'row'}}>
       <TouchableOpacity
-        style={{width:50, paddingLeft:SIZES.padding * 1, justifyContent:'center'}}
+        style={{width:50, paddingLeft:SIZES.padding * 2, justifyContent:'center'}}
         
         onPress={() => navigation.goBack()}>
 
@@ -27,6 +27,29 @@ function renderHeader(){
           resizeMode='contain'
           style={{width:30, height:30}}/>
       </TouchableOpacity>
+
+      {/* restaurant name */}
+
+      <View style={{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center',
+
+      }}>
+
+        <View style={{
+          height:50,
+          alignItems:'center',
+          justifyContent:'center',
+          paddingHorizontal: SIZES.padding *3,
+          borderRadius:SIZES.radius,
+          backgroundColor: COLORS.lightGray2
+        }}>
+          <Text>{restaurant?.name}</Text>
+
+        </View>
+
+      </View>
 
     </View>
   )
