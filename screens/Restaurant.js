@@ -45,19 +45,71 @@ function renderHeader(){
           borderRadius:SIZES.radius,
           backgroundColor: COLORS.lightGray2
         }}>
-          <Text>{restaurant?.name}</Text>
+          <Text style={{...FONTS.h3}}>{restaurant?.name}</Text>
 
         </View>
 
       </View>
+      <TouchableOpacity style={{
+        width:50,
+        paddingRight:SIZES.padding * 2,
+        justifyContent:'center',
+        
+        }}>
+
+        <Image 
+          source={icons.menu}
+          resizeMode='contain'
+          style={{width:30, height:30}}
+        
+        />
+
+
+      </TouchableOpacity>
 
     </View>
   )
 }
+  function renderFoodInfo(){
+    return(
+      <Animated.ScrollView
+          horizontal
+          pagingEnabled
+          scrollEventThrottle={16}
+          snapToAlignment='center'
+          showsHorizontalScrollIndicator={false}>
+          
+          {
+            restaurant?.menu.map((item, index) =>(
+              <View
+              key={`menu-${index}`}
+              style={{alignItems:'center'}}>
+                <View style={{height:SIZES.height *0.35}}>
 
+                  {/* food image */}
+
+                  <Image
+                      source={item.photo}
+                      resizeMode = 'cover'
+                      style={{
+                        width:SIZES.width,
+                        height:'100%'
+                      }}/>
+                  {/* Quantity section */}
+
+                </View>
+
+              </View> 
+            ))
+          }
+
+      </Animated.ScrollView>
+    )
+  }
   return (
     <SafeAreaView>
       {renderHeader()}
+      {renderFoodInfo()}
     </SafeAreaView>
   )
 
