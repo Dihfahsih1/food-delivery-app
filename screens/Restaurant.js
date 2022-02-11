@@ -181,7 +181,7 @@ function renderHeader(){
             justifyContent:'center',
             height:SIZES.padding }}>
 
-
+            {/* work on scrolling products on details page */}
             {restaurant?.menu.map((item, index)=>{
               const opacity = dotPositem.interpolate({
                 inputRange:[index - 1, index, index + 1],
