@@ -3,7 +3,7 @@ import {View,SafeAreaView,Image, TouchableOpacity, StyleSheet,FlatList, Text, An
 
 import {COLORS, icons, images, SIZES,FONTS} from '../constants'
 const Restaurant = ({route, navigation}) => {
-
+  const scrollx = new Animated.Value(0)
   const[restaurant, setRestaurant] = React.useState(null);
   const[currentLocation, setcurrentLocation] = React.useState(null);
 
@@ -149,6 +149,20 @@ function renderHeader(){
 
                 </View>
 
+                {/* calories */}
+                <View style={{ flexDirection:'row', marginTop:10}}>
+                  <Image 
+                      source={icons.calories}
+                      style={{
+                        width:30,
+                        height:25,
+                        marginRight:10
+                      }} />
+                  <Text style={{...FONTS.body3, color:COLORS.darkGray}}>{item.calories.toFixed(2)} cal</Text>
+
+
+                </View>
+
               </View> 
             ))
           }
@@ -156,10 +170,56 @@ function renderHeader(){
       </Animated.ScrollView>
     )
   }
+  function renderDots(){
+    const dotPosition = Animated.divide(scrollX, SIZES.width)
+    return(
+      <View style={{height:30}}>
+        <View
+          style={{
+            flexDirection:'row',
+            alignItems:'center',
+            justifyContent:'center',
+            height:SIZES.padding }}>
+
+
+            {restaurant?.menu.map((item, index)=>{
+              const opacity = dotPositem.interpolate({
+                inputRange:[index - 1, index, index + 1],
+                outputRange:[SIZES.base * 0.8, 10, SIZES.base *0.8],
+                extrapolate:"clamp"
+              })
+
+              const dotSize = dotPositem.interpolate({
+                inputRange:[index - 1, index, index + 1],
+                outputRange:[0.3, 1, 0.3],
+                extrapolate:"clamp"
+              })
+
+              const dotColor = dotPositem.interpolate({
+                inputRange:[index - 1, index, index + 1],
+                outputRange:[COLORS.darkGray, COLORS.primary, COLORS.darkGray2],
+                extrapolate:"clamp"
+              })
+            })}
+        </View>
+      </View>
+
+    )
+  }
+  function renderOrder(){
+    return(
+      <View>
+        {
+          renderDots()
+        }
+      </View>
+    )
+  }
   return (
     <SafeAreaView>
       {renderHeader()}
       {renderFoodInfo()}
+      {renderOrder()}
     </SafeAreaView>
   )
 
