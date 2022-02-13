@@ -3,7 +3,7 @@ import {View,SafeAreaView,Image, TouchableOpacity, StyleSheet,FlatList, Text, An
 
 import {COLORS, icons, images, SIZES,FONTS} from '../constants'
 const Restaurant = ({route, navigation}) => {
-  const scrollx = new Animated.Value(0)
+  const scrollX = new Animated.Value(0)
   const[restaurant, setRestaurant] = React.useState(null);
   const[currentLocation, setcurrentLocation] = React.useState(null);
 
@@ -77,7 +77,11 @@ function renderHeader(){
           pagingEnabled
           scrollEventThrottle={16}
           snapToAlignment='center'
-          showsHorizontalScrollIndicator={false}>
+          showsHorizontalScrollIndicator={false}
+          onScroll={Animated.event([
+            {nativeEvent:{contentOffset:{x: scrollX }}}
+          ], {useNativeDriver: false})}
+          >
           
           {
             restaurant?.menu.map((item, index) =>(
@@ -171,7 +175,7 @@ function renderHeader(){
     )
   }
   function renderDots(){
-    const dotPosition = Animated.divide(scrollX, SIZES.width)
+    const dotPositem = Animated.divide(scrollX, SIZES.width)
     return(
       <View style={{height:30}}>
         <View
@@ -185,13 +189,13 @@ function renderHeader(){
             {restaurant?.menu.map((item, index)=>{
               const opacity = dotPositem.interpolate({
                 inputRange:[index - 1, index, index + 1],
-                outputRange:[SIZES.base * 0.8, 10, SIZES.base *0.8],
+                outputRange:[0.3, 1, 0.3 ],
                 extrapolate:"clamp"
               })
 
               const dotSize = dotPositem.interpolate({
                 inputRange:[index - 1, index, index + 1],
-                outputRange:[0.3, 1, 0.3],
+                outputRange:[SIZES.base * 0.8, 10, SIZES.base *0.8],
                 extrapolate:"clamp"
               })
 
@@ -200,6 +204,18 @@ function renderHeader(){
                 outputRange:[COLORS.darkGray, COLORS.primary, COLORS.darkGray2],
                 extrapolate:"clamp"
               })
+              return(
+                <Animated.View
+                    key={`dot-${index}`}
+                    opacity = {opacity}
+                    style={{
+                      borderRadius: SIZES.radius,
+                      marginHorizontal:6,
+                      width:dotSize,
+                      height:dotSize,
+                      backgroundColor: dotColor
+                    }} />
+              )
             })}
         </View>
       </View>
@@ -212,6 +228,72 @@ function renderHeader(){
         {
           renderDots()
         }
+
+        <View
+            style={{
+              backgroundColor:COLORS.white,
+              borderTopLeftRadius:40,
+              borderTopRightRadius:40
+            }}>
+
+          <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                paddingVertical: SIZES.padding * 2,
+                paddingHorizontal: SIZES.padding *3,
+                borderBottomWidth: 1}}>
+
+                <Text style={{...FONTS.h3}}>Items in the cart </Text>
+                <Text style={{...FONTS.h3}}> $ 45</Text>
+
+          </View>
+
+          <View style={{
+            flexDirection:'row',
+            justifyContent: 'space-between',
+            paddingVertical: SIZES.padding * 2,
+            paddingHorizontal: SIZES.padding *3,
+
+          }}>
+            <View style={{
+              flexDirection: 'row'}}>
+                <Image 
+                  source={icons.location}
+                  resizeMode = 'contain'
+                  style={{
+                    width:20,
+                    height:20,
+                    tintColor:COLORS.darkGray
+                  }} />
+                  <Text style={{marginLeft:SIZES.padding, ...FONTS.h4}}>Location</Text>
+            </View>
+
+            <View style={{flexDirection:'row'}}>
+              <Image 
+                  source={icons.visa}
+                  resizeMode="contain"
+                  style={{
+                    width:20,
+                    height:20,
+                    tintColor:COLORS.darkGray
+                  }}/>
+
+                  <Text style={{marginLeft:SIZES.padding, ...FONTS.h4}}>8888 </Text>
+
+            </View>
+              
+
+          </View>
+           {/* order button */}
+           <View style={{ padding:SIZES.padding*2, alignment:'center', justifyConetnt:'center'}}>
+             <TouchableOpacity
+                style={{ width:SIZES.width * 0.9, padding:SIZES.padding, backgroundColor:COLORS.primary, alignItems:'center', borderRadius:SIZES.radius}}>
+              <Text style={{color:COLORS.white, ...FONTS.h2}}>Order</Text>
+             </TouchableOpacity>
+
+           </View>
+        </View>
       </View>
     )
   }
