@@ -6,6 +6,7 @@ const Restaurant = ({route, navigation}) => {
   const scrollX = new Animated.Value(0)
   const[restaurant, setRestaurant] = React.useState(null);
   const[currentLocation, setcurrentLocation] = React.useState(null);
+  const[orderItems, setOrderItems] = React.useState([]);
 
   React.useEffect(() =>{
     let{item, currentLocation} = route.params
@@ -14,6 +15,13 @@ const Restaurant = ({route, navigation}) => {
     setcurrentLocation(currentLocation)
   })
 
+  function editOrder(action, menuId, price){
+    if (action == "+"){
+
+    }else{
+      
+    }
+  }
 function renderHeader(){
   return (
     <View style={{flexDirection:'row'}}>
