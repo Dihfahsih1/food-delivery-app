@@ -136,7 +136,7 @@ function renderHeader(){
                       <Text style={{...FONTS.body1}}>-</Text>
                     </TouchableOpacity>
                     <View style={{width:50,backgroundColor:COLORS.white,alignItems:'center',justifyContent:'center'}}>
-                      <Text style={{...FONTS.h2}}>5</Text>
+                      <Text style={{...FONTS.h2}}>{getOrderQty(item.menuId)}</Text>
                     </View>
 
                     <TouchableOpacity
