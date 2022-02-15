@@ -16,11 +16,14 @@ const Restaurant = ({route, navigation}) => {
   })
 
   function editOrder(action, menuId, price){
+    let orderList = orderItems.slice()
+    let item = orderList.filter(a =>a.menuId == menuId)
     if (action == "+"){
-      let orderList = orderItems.slice()
-      let item = orderList.filter(a =>a.menuId == menuId)
-      item[0].qty = newQty
-      item[0].total = item[0].qty * price
+            
+      if (item.length > 0){
+        let newQty = item[0].qty + 1
+        item[0].qty = newQty
+        item[0].total = item[0].qty * price
     }else{
       const newItem ={
         menuId: menuId,
@@ -33,9 +36,24 @@ const Restaurant = ({route, navigation}) => {
     setOrderItems(orderList)
 
     }else{
-      
+      if(item.length > 0){
+        if (item[0]?.qty > 0){
+          let newQty = item[0].qty -1
+          item[0].qty=newQty
+          item[0].total=newQty*price
+        }
+      }
+      setOrderItems(orderList)
     }
   }
+
+function getOrderQty(menuId){
+  let orderItem = orderItems.filter(a => a.menuId == menuId)
+
+  if(orderItem.length > 0){
+
+  }
+}
 function renderHeader(){
   return (
     <View style={{flexDirection:'row'}}>
@@ -131,11 +149,15 @@ function renderHeader(){
                           justifyContent:'center',
                           borderTopLeftRadius:25,
                           borderBottomLeftRadius:25,
-                        }}>
+                        }}
+                      onPress={()=> editOrder("-", item.menuId, item.price)}
+                      >
 
                       <Text style={{...FONTS.body1}}>-</Text>
                     </TouchableOpacity>
-                    <View style={{width:50,backgroundColor:COLORS.white,alignItems:'center',justifyContent:'center'}}>
+
+                    <View 
+                        style={{width:50,backgroundColor:COLORS.white,alignItems:'center',justifyContent:'center'}}>
                       <Text style={{...FONTS.h2}}>{getOrderQty(item.menuId)}</Text>
                     </View>
 
