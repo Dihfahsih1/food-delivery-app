@@ -345,7 +345,12 @@ function renderHeader(){
            {/* order button */}
            <View style={{ padding:SIZES.padding*2, alignment:'center', justifyConetnt:'center'}}>
              <TouchableOpacity
-                style={{ width:SIZES.width * 0.9, padding:SIZES.padding, backgroundColor:COLORS.primary, alignItems:'center', borderRadius:SIZES.radius}}>
+                style={{ width:SIZES.width * 0.9, padding:SIZES.padding, backgroundColor:COLORS.primary, alignItems:'center', borderRadius:SIZES.radius}}
+                
+                onPress={() => navigation.navigate("OrderDelivery", {
+                  restaurant:restaurant,
+                  currentLocation:CurrentLocation
+                })}>
               <Text style={{color:COLORS.white, ...FONTS.h2}}>Order</Text>
              </TouchableOpacity>
 
