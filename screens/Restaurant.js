@@ -60,6 +60,11 @@ function getBasketItemCount(){
   let itemCount = orderItems.reduce((a,b) => a + (b.qty || 0), 0)
   return itemCount
 }
+
+function sumOrder(){
+ let total = orderItems.reduce((a,b) => a + (b.total || 0), 0)
+ return total.toFixed(2)
+}
 function renderHeader(){
   return (
     <View style={{flexDirection:'row'}}>
@@ -297,7 +302,7 @@ function renderHeader(){
                 borderBottomWidth: 1}}>
 
                 <Text style={{...FONTS.h3}}>{getBasketItemCount()} Items in the cart </Text>
-                <Text style={{...FONTS.h3}}> $ 45</Text>
+                <Text style={{...FONTS.h3}}> $ {sumOrder()}</Text>
 
           </View>
 
