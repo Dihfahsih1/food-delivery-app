@@ -349,7 +349,7 @@ function renderHeader(){
                 
                 onPress={() => navigation.navigate("OrderDelivery", {
                   restaurant:restaurant,
-                  currentLocation:CurrentLocation
+                  currentLocation:currentLocation
                 })}>
               <Text style={{color:COLORS.white, ...FONTS.h2}}>Order</Text>
              </TouchableOpacity>
