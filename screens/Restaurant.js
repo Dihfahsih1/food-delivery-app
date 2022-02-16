@@ -56,6 +56,10 @@ function getOrderQty(menuId){
   }
   return 0
 }
+function getBasketItemCount(){
+  let itemCount = orderItems.reduce((a,b) => a + (b.qty || 0), 0)
+  return itemCount
+}
 function renderHeader(){
   return (
     <View style={{flexDirection:'row'}}>
@@ -292,7 +296,7 @@ function renderHeader(){
                 paddingHorizontal: SIZES.padding *3,
                 borderBottomWidth: 1}}>
 
-                <Text style={{...FONTS.h3}}>Items in the cart </Text>
+                <Text style={{...FONTS.h3}}>{getBasketItemCount()} Items in the cart </Text>
                 <Text style={{...FONTS.h3}}> $ 45</Text>
 
           </View>
