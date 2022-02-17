@@ -4,6 +4,7 @@
 
 # Xcode
 #
+/constants/maps.js
 build/
 *.pbxuser
 !default.pbxuser
