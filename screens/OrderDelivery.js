@@ -73,7 +73,7 @@ const OrderDelivery = ({route, navigation}) => {
           </View>
       </Marker>
     )
-    const carIcon=()=>(
+    const carIcon = ()=>(
       <Marker
           coordinate={ fromLocation}
           anchor={{ x:0.5, y:0.5}}
