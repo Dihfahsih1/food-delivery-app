@@ -3,6 +3,8 @@ import {View,SafeAreaView,Image, TouchableOpacity, StyleSheet,FlatList, Text, An
 import MapView ,{PROVIDER_GOOGLE, Marker} from 'react-native-maps'
 import {COLORS, icons, images, SIZES,FONTS, GOOGLE_API_KEY} from '../constants'
 
+import MapViewDirections from 'react-native-maps-directions';
+
 const OrderDelivery = ({route, navigation}) => {
   
   const [restaurant, setRestaurant] = React.useState(null)
@@ -94,7 +96,19 @@ const OrderDelivery = ({route, navigation}) => {
         <MapView 
           provider ={PROVIDER_GOOGLE}
           initialRegion ={region}
+
           style={{flex: 1}}>
+
+          <MapViewDirections
+          origin={fromLocation}
+          destination={toLocation}
+          apikey={GOOGLE_API_KEY}
+          strokeWidth={5}
+          strokeColor={COLORS.primary}
+          optimizeWaypoints={true}
+
+           />
+
 
           {destinationMarker()}
           {carIcon()}
