@@ -51,6 +51,7 @@ const navigator = require("../assets/icons/navigator.png")
 const navigator1 = require("../assets/icons/navigator1.png")
 const user = require("../assets/icons/user.png")
 const like = require("../assets/icons/like.png")
+const car = require("../assets/icons/car.png")
 
 export default {
     apple,
@@ -106,4 +107,5 @@ export default {
     navigator1,
     like,
     user,
+    car
 }

@@ -38,7 +38,7 @@ const OrderDelivery = ({route, navigation}) => {
     const destinationMarker=() =>(
       <Marker 
         coordinate={ toLocation }
-        
+
         >
           <View 
             style ={{
@@ -71,6 +71,24 @@ const OrderDelivery = ({route, navigation}) => {
           </View>
       </Marker>
     )
+    const carIcon=()=>(
+      <Marker
+          coordinate={ fromLocation}
+          anchor={{ x:0.5, y:0.5}}
+          flat={true}
+          
+          //rotation
+          >
+          <Image 
+            source ={icons.car}
+            style={{
+              width:70,
+              height:50
+            }}
+          />
+        
+      </Marker>
+    )
     return(
       <View style={{flex: 1}}>
         <MapView 
@@ -79,6 +97,7 @@ const OrderDelivery = ({route, navigation}) => {
           style={{flex: 1}}>
 
           {destinationMarker()}
+          {carIcon()}
 
 
         </MapView>
